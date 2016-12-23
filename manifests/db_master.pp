@@ -104,7 +104,7 @@ class ora_rac::db_master(
       owner   => $ora_rac::settings::oracle_user,
       group   => $ora_rac::settings::install_group,
       source  => 'puppet:///modules/ora_rac/cvu_config',
-      require => Ora_install::Installdb[$ora_rac::settings::_oracle_file],
+      require => Oradb::Installdb[$ora_rac::settings::_oracle_file],
       before  => Ora_database[$db_name],
     }
 
@@ -113,7 +113,7 @@ class ora_rac::db_master(
       owner   => $ora_rac::settings::grid_user,
       group   => $ora_rac::settings::install_group,
       source  => 'puppet:///modules/ora_rac/cvu_config',
-      require => Ora_install::Installasm[$ora_rac::settings::_grid_file],
+      require => Oradb::Installasm[$ora_rac::settings::_grid_file],
       before  => Ora_database[$db_name],
     }
   }
@@ -164,7 +164,7 @@ class ora_rac::db_master(
     download_dir              => $ora_rac::settings::download_dir,
     cluster_nodes             => $::hostname,
     remote_file               => $ora_rac::settings::remote_file,
-    require                   => Ora_install::Installasm[$ora_rac::settings::_grid_file],
+    require                   => Oradb::Installasm[$ora_rac::settings::_grid_file],
     before                    => Ora_database[$db_name],
   }
 
