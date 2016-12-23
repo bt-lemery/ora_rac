@@ -121,7 +121,7 @@ class ora_rac::db_master(
   # Create all ASM disks before staring the ASM installation
   Ora_rac::Asm_disk<||> -> Ora_install::Installasm<||>
 
-  ora_install::installasm{ $ora_rac::settings::_grid_file:
+  oradb::installasm{ $ora_rac::settings::_grid_file:
     version                   => $ora_rac::settings::version,
     file                      => $ora_rac::settings::_grid_file,
     grid_type                 => 'CRS_CONFIG',
@@ -149,7 +149,7 @@ class ora_rac::db_master(
     storage_option            => 'ASM_STORAGE',
   } ->
 
-  ora_install::installdb{ $ora_rac::settings::_oracle_file:
+  oradb::installdb{ $ora_rac::settings::_oracle_file:
     version                   => $ora_rac::settings::version,
     file                      => $ora_rac::settings::_oracle_file,
     user                      => $ora_rac::settings::oracle_user,
