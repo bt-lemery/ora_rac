@@ -119,7 +119,7 @@ class ora_rac::db_master(
   }
 
   # Create all ASM disks before staring the ASM installation
-  Ora_rac::Asm_disk<||> -> Ora_install::Installasm<||>
+  Ora_rac::Asm_disk<||> -> Oradb::Installasm<||>
 
   oradb::installasm{ $ora_rac::settings::_grid_file:
     version                   => $ora_rac::settings::version,
